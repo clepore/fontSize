@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Font Resize</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Christopher Lepore">
+	<link href="styles/base.css" rel="stylesheet" type="text/css">
+	<!-- Date: 2011-04-01 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script src="../fontSize.js" type="text/javascript" charset="utf-8"></script>
+	<script src="scripts/cookies.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(function() {
+			$('.text').fontSize({
+				decreaseButton: $('#DecreaseBtn'),
+				increaseButton: $('#IncreaseBtn')				
+			});			
+		});
+	</script>
+</head>
+<body>
+	<div id='Main'>
+		<div class='buttons'>
+			<span>Font:</span>
+			<input type='button' id="IncreaseBtn" value='Increase +'/>
+			<input type='button' id="DecreaseBtn" value='Decrease -'/>
+		</div>
+		<div>
+			<p id='FirstParagraph' class='text'><span class='relative'>Relative Size</span>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p id='SecondParagraph' class='text'><span class='fixed'>Fixed Size</span>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+	</div>
+</body>
+</html>

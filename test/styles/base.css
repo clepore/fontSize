@@ -1,0 +1,21 @@
+body{
+	font-family: Helvetica;
+	font-size: 15px;
+}
+#Main{
+	background-color: #C0C0C0;
+	padding: 10px;
+	margin: 0 auto;
+	text-align: center;
+	width: 650px;	
+}
+.text{
+	text-align: left;
+}
+
+.relative{
+	font-size: 1.5em;
+}
+.fixed{
+	font-size: 18px;
+}

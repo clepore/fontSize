@@ -49,95 +49,93 @@
             options = $.extend({}, $.fn.fontSize.defaults, options);
             
             return this.each(function() {
-              var self = $(this);
+              var $self = $(this);
 				
-      				self.data('fontSize', {
+      				$self.data('fontSize', {
       					options: options,
       					decreaseButton: $(options.decreaseButton),
       					increaseButton: $(options.increaseButton)
       				});				
-      				functions.setup.call(self);	
+      				functions.setup.call($self);	
             });
         }
     };
       
     var functions = {
-		setup: function(){
-			var self = $(this);			
-			var data = self.data('fontSize');
-			
-			data.increaseButton.click(function(){
-				functions.increaseText.call(self);
-				return false;
-			});
-			
-			data.decreaseButton.click(function(){
-				functions.decreaseText.call(self);
-				return false;
-			});
-			
-			var fontSize = functions.getLocalItem(self.attr('id'));
-			if(fontSize){
-				$(self).css('font-size', fontSize);
-			}
-		},
-		
-		increaseText: function(){
-			var self = $(this);									
-			var data = self.data('fontSize');			
-			var curSize = parseInt(self.css('fontSize'));
-			
-			if (curSize <= data.options.sizeMax){
-				var newSize = (curSize + 1) + "px";
-				
-				self.css('font-size', newSize);	
+  		setup: function(){
+  			var $self = $(this);			
+  			var data = $self.data('fontSize');
+  			
+  			data.increaseButton.click(function(){
+  				functions.increaseText.call($self);
+  				return false;
+  			});
+  			
+  			data.decreaseButton.click(function(){
+  				functions.decreaseText.call($self);
+  				return false;
+  			});
+  			
+  			var fontSize = functions.getLocalItem($self.attr('id'));
+  			if (fontSize) {
+  				$self.css('font-size', fontSize);
+  			}
+  		},
+  		
+  		increaseText: function(){
+  			var $self = $(this);									
+  			var data = $self.data('fontSize');			
+  			var curSize = parseInt($self.css('fontSize'));
+  			
+  			if (curSize <= data.options.sizeMax){
+  				var newSize = (curSize + 1) + "px";
+  				
+  				$self.css('font-size', newSize);	
 
-				functions.setLocalItem(self.attr('id'), newSize);
-			}				
-		},
-		
-		decreaseText: function(){
-			var self = $(this);	
-			var data = self.data('fontSize');			
-			var curSize = parseInt(self.css('fontSize'));
-			
-			if (curSize >= data.options.sizeMin){
-				var newSize = (curSize - 1) + "px";
-				
-				self.css('font-size', newSize);
-				
-				functions.setLocalItem(self.attr('id'), newSize);					
-			}			
-		},
-		
-		setLocalItem: function(id, val){
-			if(functions.hasLocalStorage()){
-				localStorage.setItem(id,val);
-			}else{
-				if(jQuery.cookies){
-					$.cookie(id, val);
-				}				
-			}			
-		},		
-		
-		getLocalItem: function(id){
-			if(functions.hasLocalStorage()){
-				return localStorage.getItem(id);
-			}else{
-				if(jQuery.cookies){
-					return $.cookie(id);
-				}
-			}
-			return null;
-		},
-		
-		hasLocalStorage: function() {
-			try {
-				return 'localStorage' in window && window['localStorage'] !== null;
-			} catch (e) {
-				return false;
-			}
-		}
+  				functions.setLocalItem($self.attr('id'), newSize);
+  			}				
+  		},
+  		
+  		decreaseText: function(){
+  			var $self = $(this);	
+  			var data = $self.data('fontSize');			
+  			var curSize = parseInt($self.css('fontSize'));
+  			
+  			if (curSize >= data.options.sizeMin){
+  				var newSize = (curSize - 1) + "px";
+  				
+  				$self.css('font-size', newSize);
+  				
+  				functions.setLocalItem($self.attr('id'), newSize);					
+  			}			
+  		},
+  		
+  		setLocalItem: function(id, val){
+  			if (functions.hasLocalStorage()){
+  				localStorage.setItem(id,val);
+  			} else if (jQuery.cookies) {
+  				$.cookie(id, val);
+  			}			
+  		},		
+  		
+  		getLocalItem: function(id){
+  			if (functions.hasLocalStorage()) {
+  				return localStorage.getItem(id);
+  			} else {
+  				if (jQuery.cookies) {
+  					return $.cookie(id);
+  				}
+  			}
+  			return null;
+  		},
+  		
+  		hasLocalStorage: function() {
+  			try {
+  				return 'localStorage' in window && window['localStorage'] !== null;
+  			} catch (e) {
+  				return false;
+  			}
+  		}
     };
     
     /**
@@ -165,8 +163,8 @@
     
     jQuery.fn.fontSize.defaults = {
    		decreaseButton: $(),
-		increaseButton: $(),
-		sizeMax: 20,
-		sizeMin: 10
-	};
+  		increaseButton: $(),
+  		sizeMax: 20,
+  		sizeMin: 10
+  	};
 })(jQuery);
